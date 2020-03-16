@@ -9,7 +9,7 @@ const App = () => {
   return (
     <Fragment>
       <h1>Contact List</h1>
-      <div className="subtitle">Subtitle</div>
+      <div className="subtitle">APP</div>
       <ContactList />
     </Fragment>
   );
