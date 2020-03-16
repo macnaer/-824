@@ -1,15 +1,13 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./ContactList.css";
 
 import CintactItem from "./ContactItem/ContacItem";
 
 const ContactList = () => {
   return (
-    <Fragment>
-      <h2>CONTACT LIST Component</h2>
-      <div>First contact</div>
+    <ul class="list-group" id="contact-list">
       <CintactItem />
-    </Fragment>
+    </ul>
   );
 };
 export default ContactList;
