@@ -5,6 +5,7 @@ import "./index.css";
 
 // Components
 import ContactList from "./Components/ContactList/ContactList";
+import AddContact from "./Components/AddContact/AddContact";
 
 class App extends React.Component {
   state = {
@@ -101,6 +102,7 @@ class App extends React.Component {
             List={this.state.List}
             onStarChange={this.onStarChange}
           />
+          <AddContact />
         </div>
       </div>
     );
