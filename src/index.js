@@ -16,7 +16,8 @@ class App extends React.Component {
         phone: "(870) 288-4149",
         email: "richerd.stevens@example.com",
         gender: "men",
-        avatar: 3
+        avatar: 3,
+        star: false
       },
       {
         id: uuid(),
@@ -25,7 +26,8 @@ class App extends React.Component {
         phone: "(068) 87-41-789",
         email: "linus@kernel.org",
         gender: "men",
-        avatar: 34
+        avatar: 34,
+        star: true
       },
       {
         id: uuid(),
@@ -34,7 +36,8 @@ class App extends React.Component {
         phone: "(050) 288-41-491",
         email: "deniss@example.com",
         gender: "men",
-        avatar: 76
+        avatar: 76,
+        star: true
       },
       {
         id: uuid(),
@@ -43,9 +46,22 @@ class App extends React.Component {
         phone: "(066) 77-61-291",
         email: "Camila@london.com",
         gender: "women",
-        avatar: 23
+        avatar: 23,
+        star: false
       }
     ]
+  };
+
+  onStarChange = id => {
+    // console.log("onStarChange ", id);
+    const index = this.state.List.findIndex(elem => elem.id === id);
+    let temList = this.state.List.slice();
+    temList[index].star = !temList[index].star;
+    this.setState(state => {
+      return {
+        star: !this.temList
+      };
+    });
   };
 
   render() {
@@ -81,7 +97,10 @@ class App extends React.Component {
               </ul>
             </div>
           </div>
-          <ContactList List={this.state.List} />
+          <ContactList
+            List={this.state.List}
+            onStarChange={this.onStarChange}
+          />
         </div>
       </div>
     );

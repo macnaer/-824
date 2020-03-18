@@ -1,6 +1,14 @@
-.list-group-item {
+/* .list-group-item {
   cursor: pointer;
-}
+} */
 button {
   margin: 15px 0 0 15px;
+}
+span .fa {
+  margin-left: 9px;
+  cursor: pointer;
+}
+
+.star {
+  color: darkorange;
 }

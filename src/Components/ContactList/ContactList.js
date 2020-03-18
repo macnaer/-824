@@ -3,7 +3,7 @@ import "./ContactList.css";
 
 import ContactItem from "./ContactItem/ContacItem";
 
-const ContactList = ({ List }) => {
+const ContactList = ({ List, onStarChange }) => {
   // console.log("Props in ContactList ", List);
   const singleContact = List.map(item => {
     return (
@@ -15,6 +15,8 @@ const ContactList = ({ List }) => {
         email={item.email}
         gender={item.gender}
         avatar={item.avatar}
+        star={item.star}
+        onStarChange={() => onStarChange(item.id)}
       />
     );
   });

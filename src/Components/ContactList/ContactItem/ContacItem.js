@@ -8,7 +8,8 @@ class ContactItem extends Component {
     phone: this.props.phone,
     email: this.props.email,
     gender: this.props.gender,
-    avatar: this.props.avatar
+    avatar: this.props.avatar,
+    star: this.props.star
   };
 
   onRandomAvatar = () => {
@@ -19,10 +20,21 @@ class ContactItem extends Component {
     });
   };
 
+  // onStar = () => {
+  //   this.setState({
+  //     star: !this.state.star
+  //   });
+  // };
+
   render() {
-    const { name, address, phone, email, gender, avatar } = this.state;
+    const { name, address, phone, email, gender, avatar, star } = this.state;
     const URL = `http://api.randomuser.me/portraits/${gender}/${avatar}.jpg`;
     //console.log("Data from ContactList ", this.props);
+
+    let starStyle = "fa fa-star-o fa-2x star";
+    if (this.props.star) {
+      starStyle = "fa fa-star fa-2x star";
+    }
     return (
       <Fragment>
         <li className="list-group-item">
@@ -58,6 +70,13 @@ class ContactItem extends Component {
             <span>
               <span className="text-muted">{email}</span>
               <br />
+            </span>
+            <span>
+              <i
+                className={starStyle}
+                aria-hidden="true"
+                onClick={this.props.onStarChange}
+              ></i>
             </span>
           </div>
           <div className="clearfix"></div>
