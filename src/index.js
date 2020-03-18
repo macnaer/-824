@@ -65,6 +65,26 @@ class App extends React.Component {
     });
   };
 
+  onAddContact = (name, address, phone, avatar, email) => {
+    console.log(
+      `Name: ${name}\nAdderss: ${address}\nPhone: ${phone}\nAvatar: ${avatar}\nEmail: ${email}`
+    );
+    const newContact = {
+      id: uuid(),
+      name: name,
+      address: address,
+      phone: phone,
+      email: email,
+      gender: "women",
+      avatar: avatar,
+      star: false
+    };
+    const newList = [...this.state.List, newContact];
+    this.setState({
+      List: newList
+    });
+  };
+
   render() {
     return (
       <div className="container">
@@ -102,7 +122,7 @@ class App extends React.Component {
             List={this.state.List}
             onStarChange={this.onStarChange}
           />
-          <AddContact />
+          <AddContact onAddContact={this.onAddContact} />
         </div>
       </div>
     );

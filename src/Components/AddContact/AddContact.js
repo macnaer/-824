@@ -46,15 +46,24 @@ class AddContact extends React.Component {
     });
   };
 
+  onSendData = event => {
+    event.preventDefault();
+    // console.log(
+    //   `Name: ${this.state.name}\nAdderss: ${this.state.address}\nPhone: ${this.state.phone}\nAvatar: ${this.state.avatar}\nEmail: ${this.state.email}`
+    // );
+    const { name, address, phone, avatar, email } = this.state;
+    this.props.onAddContact(name, address, phone, avatar, email);
+  };
+
   render() {
     return (
       <div>
-        {this.state.name}
+        {/* {this.state.name}
         {this.state.address}
         {this.state.phone}
         {this.state.avatar}
-        {this.state.email}
-        <form>
+        {this.state.email} */}
+        <form onSubmit={this.onSendData}>
           <div className="form-group">
             <div className="form-group">
               <label forHtml="name">Name</label>
@@ -113,7 +122,7 @@ class AddContact extends React.Component {
             </label>
           </div>
           <button type="submit" className="btn btn-primary">
-            Submit
+            Add contact
           </button>
         </form>
       </div>
