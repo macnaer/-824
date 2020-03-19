@@ -101,35 +101,6 @@ class App extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="panel panel-default">
-            <div className="panel-heading c-list">
-              <span className="title">Contacts</span>
-              <ul className="pull-right c-controls">
-                <li>
-                  <a
-                    href="#cant-do-all-the-work-for-you"
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="Add Contact"
-                  >
-                    <i className="glyphicon glyphicon-plus"></i>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="hide-search"
-                    data-command="toggle-search"
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="Toggle Search"
-                  >
-                    <i className="fa fa-ellipsis-v"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
           <Router>
             <Switch>
               <Route
