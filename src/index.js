@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import uuid from "react-uuid";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./index.css";
 
 // Components
@@ -88,6 +89,12 @@ class App extends React.Component {
     const index = this.state.List.findIndex(elem => elem.id === id);
     // console.log(id);
     // console.log(index);
+    const partOne = this.state.List.slice(0, index);
+    const partTwo = this.state.List.slice(index + 1);
+    const newList = [...partOne, ...partTwo];
+    this.setState({
+      List: newList
+    });
   };
 
   render() {
@@ -123,12 +130,26 @@ class App extends React.Component {
               </ul>
             </div>
           </div>
-          <ContactList
-            List={this.state.List}
-            onStarChange={this.onStarChange}
-            onDeleteContact={this.onDeleteContact}
-          />
-          <AddContact onAddContact={this.onAddContact} />
+          <Router>
+            <Switch>
+              <Route
+                path="/"
+                exact
+                render={() => (
+                  <ContactList
+                    List={this.state.List}
+                    onStarChange={this.onStarChange}
+                    onDeleteContact={this.onDeleteContact}
+                  />
+                )}
+              />
+              <Route
+                path="/addcontact"
+                exact
+                render={() => <AddContact onAddContact={this.onAddContact} />}
+              />
+            </Switch>
+          </Router>
         </div>
       </div>
     );
