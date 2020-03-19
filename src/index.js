@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import uuid from "react-uuid";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -7,6 +7,7 @@ import "./index.css";
 // Components
 import ContactList from "./Components/ContactList/ContactList";
 import AddContact from "./Components/AddContact/AddContact";
+import Header from "./Components/Header/Header";
 
 class App extends React.Component {
   state = {
@@ -99,30 +100,33 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <Router>
-            <Switch>
-              <Route
-                path="/"
-                exact
-                render={() => (
-                  <ContactList
-                    List={this.state.List}
-                    onStarChange={this.onStarChange}
-                    onDeleteContact={this.onDeleteContact}
-                  />
-                )}
-              />
-              <Route
-                path="/addcontact"
-                exact
-                render={() => <AddContact onAddContact={this.onAddContact} />}
-              />
-            </Switch>
-          </Router>
-        </div>
-      </div>
+      <Fragment>
+        <Router>
+          <Header />
+          <div className="container">
+            <div className="row">
+              <Switch>
+                <Route
+                  path="/"
+                  exact
+                  render={() => (
+                    <ContactList
+                      List={this.state.List}
+                      onStarChange={this.onStarChange}
+                      onDeleteContact={this.onDeleteContact}
+                    />
+                  )}
+                />
+                <Route
+                  path="/addcontact"
+                  exact
+                  render={() => <AddContact onAddContact={this.onAddContact} />}
+                />
+              </Switch>
+            </div>
+          </div>
+        </Router>
+      </Fragment>
     );
   }
 }
