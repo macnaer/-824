@@ -3,7 +3,7 @@ import "./ContactList.css";
 
 import ContactItem from "./ContactItem/ContacItem";
 
-const ContactList = ({ List, onStarChange }) => {
+const ContactList = ({ List, onStarChange, onDeleteContact }) => {
   // console.log("Props in ContactList ", List);
   const singleContact = List.map(item => {
     return (
@@ -17,6 +17,7 @@ const ContactList = ({ List, onStarChange }) => {
         avatar={item.avatar}
         star={item.star}
         onStarChange={() => onStarChange(item.id)}
+        onDeleteContact={() => onDeleteContact(item.id)}
       />
     );
   });

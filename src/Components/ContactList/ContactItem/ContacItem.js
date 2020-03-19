@@ -42,7 +42,22 @@ class ContactItem extends Component {
             <img src={URL} alt={name} className="img-responsive img-circle" />
           </div>
           <div className="col-xs-12 col-sm-9">
-            <span className="name">{name}</span>
+            <span className="name">
+              {name}{" "}
+              <span>
+                <i
+                  className={starStyle}
+                  aria-hidden="true"
+                  onClick={this.props.onStarChange}
+                ></i>
+                <i
+                  class="fa fa-trash-o fa-2x trash"
+                  aria-hidden="true"
+                  onClick={this.props.onDeleteContact}
+                ></i>
+              </span>
+            </span>
+
             <br />
             <span
               className="glyphicon glyphicon-map-marker text-muted c-info"
@@ -70,13 +85,6 @@ class ContactItem extends Component {
             <span>
               <span className="text-muted">{email}</span>
               <br />
-            </span>
-            <span>
-              <i
-                className={starStyle}
-                aria-hidden="true"
-                onClick={this.props.onStarChange}
-              ></i>
             </span>
           </div>
           <div className="clearfix"></div>

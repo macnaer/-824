@@ -12,3 +12,12 @@ span .fa {
 .star {
   color: darkorange;
 }
+.trash {
+  color: crimson;
+}
+.name {
+  display: block;
+}
+.name span {
+  float: right;
+}
