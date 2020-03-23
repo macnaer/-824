@@ -28,7 +28,7 @@ class ContactItem extends Component {
   // };
 
   render() {
-    const { name, address, phone, email, gender, avatar, star } = this.state;
+    const { name, address, phone, email, gender, avatar } = this.state;
     const URL = `http://api.randomuser.me/portraits/${gender}/${avatar}.jpg`;
     //console.log("Data from ContactList ", this.props);
 
@@ -53,14 +53,14 @@ class ContactItem extends Component {
                 ></i>
                 <Link to={"/edit"}>
                   <i
-                    class="fa fa-edit fa-2x edit"
+                    className="fa fa-edit fa-2x edit"
                     aria-hidden="true"
                     onClick={this.props.onEditContact}
                   ></i>
                 </Link>
 
                 <i
-                  class="fa fa-trash-o fa-2x trash"
+                  className="fa fa-trash-o fa-2x trash"
                   aria-hidden="true"
                   onClick={this.props.onDeleteContact}
                 ></i>

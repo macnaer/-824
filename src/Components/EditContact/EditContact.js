@@ -1,9 +1,67 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import "./EditContact.css";
 
 class EditContact extends React.Component {
+  state = {
+    id: this.props.currentContact.id,
+    name: this.props.currentContact.name,
+    address: this.props.currentContact.address,
+    phone: this.props.currentContact.phone,
+    email: this.props.currentContact.email,
+    gender: this.props.currentContact.gender,
+    avatar: this.props.currentContact.avatar,
+    star: this.props.currentContact.star,
+    isHome: false
+  };
+
+  getName = event => {
+    this.setState({
+      name: event.target.value
+    });
+  };
+  getName = event => {
+    this.setState({
+      name: event.target.value
+    });
+  };
+  getAddress = event => {
+    this.setState({
+      address: event.target.value
+    });
+  };
+  getPhone = event => {
+    this.setState({
+      phone: event.target.value
+    });
+  };
+  getAvatar = event => {
+    this.setState({
+      avatar: event.target.value
+    });
+  };
+  getEmail = event => {
+    this.setState({
+      email: event.target.value
+    });
+  };
+
+  onSendData = event => {
+    event.preventDefault();
+    const { id, name, address, phone, avatar, email, isHome } = this.state;
+    this.props.onEditCurrentContact(name, address, phone, avatar, email, id);
+    this.setState({
+      isHome: true
+    });
+  };
+
   render() {
-    console.log("Inside EditContact ", this.props.currentContact);
+    //console.log("Inside EditContact ", this.props.currentContact);
+    const { name, address, phone, email, gender, avatar, isHome } = this.state;
+    if (isHome) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <div>
         <form onSubmit={this.onSendData}>
@@ -14,6 +72,7 @@ class EditContact extends React.Component {
                 type="text"
                 className="form-control"
                 onChange={this.getName}
+                placeholder={name}
               />
             </div>
             <div className="form-group">
@@ -22,6 +81,7 @@ class EditContact extends React.Component {
                 type="text"
                 className="form-control"
                 onChange={this.getAddress}
+                placeholder={address}
               />
             </div>
             <div className="form-group">
@@ -30,6 +90,7 @@ class EditContact extends React.Component {
                 type="tel"
                 className="form-control"
                 onChange={this.getPhone}
+                placeholder={phone}
               />
             </div>
             <div className="form-group">
@@ -40,6 +101,7 @@ class EditContact extends React.Component {
                 max="99"
                 className="form-control"
                 onChange={this.getAvatar}
+                placeholder={avatar}
               />
             </div>
             <label forhtml="exampleInputEmail1">Email address</label>
@@ -49,6 +111,7 @@ class EditContact extends React.Component {
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               onChange={this.getEmail}
+              placeholder={email}
             />
             <small id="emailHelp" className="form-text text-muted">
               We'll never share your email with anyone else.
@@ -65,7 +128,7 @@ class EditContact extends React.Component {
             </label>
           </div>
           <button type="submit" className="btn btn-primary">
-            Add contact
+            Save
           </button>
         </form>
       </div>

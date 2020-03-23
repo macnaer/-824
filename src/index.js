@@ -71,9 +71,9 @@ class App extends React.Component {
   };
 
   onAddContact = (name, address, phone, avatar, email) => {
-    console.log(
-      `Name: ${name}\nAdderss: ${address}\nPhone: ${phone}\nAvatar: ${avatar}\nEmail: ${email}`
-    );
+    // console.log(
+    //   `Name: ${name}\nAdderss: ${address}\nPhone: ${phone}\nAvatar: ${avatar}\nEmail: ${email}`
+    // );
     const newContact = {
       id: uuid(),
       name: name,
@@ -110,6 +110,31 @@ class App extends React.Component {
     });
   };
 
+  onEditCurrentContact = (name, address, phone, avatar, email, id) => {
+    // console.log(
+    //   `Name: ${name}\nAdderss: ${address}\nPhone: ${phone}\nAvatar: ${avatar}\nEmail: ${email}`
+    // );
+    const index = this.state.List.findIndex(elem => elem.id === id);
+    const editedContact = {
+      id: id,
+      name: name,
+      address: address,
+      phone: phone,
+      email: email,
+      gender: "women",
+      avatar: avatar,
+      star: false
+    };
+    //console.log(editedContact);
+    const partOne = this.state.List.slice(0, index);
+    const partTwo = this.state.List.slice(index + 1);
+    const newList = [...partOne, editedContact, ...partTwo];
+    //console.log(newList);
+    this.setState({
+      List: newList
+    });
+  };
+
   render() {
     return (
       <Fragment>
@@ -138,7 +163,10 @@ class App extends React.Component {
                 <Route
                   path="/edit"
                   render={() => (
-                    <EditContact currentContact={this.state.currentContact} />
+                    <EditContact
+                      currentContact={this.state.currentContact}
+                      onEditCurrentContact={this.onEditCurrentContact}
+                    />
                   )}
                 />
                 <Route path="*" component={NotFound} />>
