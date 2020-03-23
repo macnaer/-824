@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
 import "./ContactItem.css";
 
 class ContactItem extends Component {
@@ -50,6 +51,14 @@ class ContactItem extends Component {
                   aria-hidden="true"
                   onClick={this.props.onStarChange}
                 ></i>
+                <Link to={"/edit"}>
+                  <i
+                    class="fa fa-edit fa-2x edit"
+                    aria-hidden="true"
+                    onClick={this.props.onEditContact}
+                  ></i>
+                </Link>
+
                 <i
                   class="fa fa-trash-o fa-2x trash"
                   aria-hidden="true"

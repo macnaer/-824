@@ -21,3 +21,6 @@ span .fa {
 .name span {
   float: right;
 }
+.edit {
+  color: forestgreen;
+}
