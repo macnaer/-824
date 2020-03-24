@@ -135,11 +135,15 @@ class App extends React.Component {
     });
   };
 
+  onSearch = contactName => {
+    console.log("Contact name => ", contactName);
+  };
+
   render() {
     return (
       <Fragment>
         <Router>
-          <Header />
+          <Header onSearch={this.onSearch} />
           <div className="container">
             <div className="row">
               <Switch>

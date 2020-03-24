@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import "./AddContact.css";
 
 class AddContact extends React.Component {
@@ -7,7 +8,8 @@ class AddContact extends React.Component {
     address: null,
     phone: null,
     avatar: null,
-    email: null
+    email: null,
+    isRedirect: false
   };
 
   getName = event => {
@@ -53,16 +55,18 @@ class AddContact extends React.Component {
     // );
     const { name, address, phone, avatar, email } = this.state;
     this.props.onAddContact(name, address, phone, avatar, email);
+    this.setState({
+      isRedirect: true
+    });
   };
 
   render() {
+    const { isRedirect } = this.state;
+    if (isRedirect) {
+      return <Redirect to="/" />;
+    }
     return (
       <div>
-        {/* {this.state.name}
-        {this.state.address}
-        {this.state.phone}
-        {this.state.avatar}
-        {this.state.email} */}
         <form onSubmit={this.onSendData}>
           <div className="form-group">
             <div className="form-group">
