@@ -12,8 +12,29 @@ import NotFound from "./Components/NotFound/NotFound";
 import EditContact from "./Components/EditContact/EditContact";
 
 class App extends React.Component {
-  state = {
-    List: [
+  constructor() {
+    super();
+    console.log("Constructor");
+  }
+
+  componentDidMount() {
+    const URL =
+      "https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5";
+    fetch(URL, {
+      method: "GET"
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        this.setState({
+          currency: data
+        });
+      })
+      .catch(err => console.log(err));
+
+    console.log("componentDidMount");
+    const List = [
       {
         id: uuid(),
         name: "Richerd Stevens",
@@ -54,9 +75,34 @@ class App extends React.Component {
         avatar: 23,
         star: false
       }
-    ],
+    ];
+    this.setState({
+      List: List
+    });
+  }
+
+  shouldComponentUpdate(prevProps, nextState) {
+    console.log("prevProps", prevProps);
+    console.log("nextState", nextState);
+    // if (nextState.List[0].star === true) {
+    //   return false;
+    // }
+    return true;
+  }
+
+  componentDidUpdate() {
+    console.log("componentDidUpdate");
+  }
+
+  componentWillUnmount() {
+    console.log("componentWillUnmount");
+  }
+
+  state = {
+    List: [],
     currentContact: "",
-    findContact: ""
+    findContact: "",
+    currency: ""
   };
 
   onStarChange = id => {
@@ -160,6 +206,7 @@ class App extends React.Component {
       this.state.List,
       this.state.findContact
     );
+    console.log("currency => ", this.state.currency);
     return (
       <Fragment>
         <Router>

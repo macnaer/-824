@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import "./ContactItem.css";
 
 class ContactItem extends Component {
+  componentWillUnmount() {
+    console.log("componentWillUnmount");
+  }
   state = {
     name: this.props.name,
     address: this.props.address,
