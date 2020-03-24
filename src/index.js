@@ -55,7 +55,8 @@ class App extends React.Component {
         star: false
       }
     ],
-    currentContact: ""
+    currentContact: "",
+    findContact: ""
   };
 
   onStarChange = id => {
@@ -136,10 +137,29 @@ class App extends React.Component {
   };
 
   onSearch = contactName => {
-    console.log("Contact name => ", contactName);
+    // console.log("Contact name => ", contactName);
+    this.setState({
+      findContact: contactName
+    });
+  };
+
+  onShowContact = (items, searchValue) => {
+    // console.log("Start items => ", items, "\nSearchValue => ", searchValue);
+    if (searchValue.length === 0) {
+      return items;
+    }
+    return items.filter(item => {
+      // console.log("item => ", item.name);
+
+      return item.name.toLowerCase().indexOf(searchValue.toLowerCase()) > -1;
+    });
   };
 
   render() {
+    const showContacts = this.onShowContact(
+      this.state.List,
+      this.state.findContact
+    );
     return (
       <Fragment>
         <Router>
@@ -152,7 +172,7 @@ class App extends React.Component {
                   exact
                   render={() => (
                     <ContactList
-                      List={this.state.List}
+                      List={showContacts}
                       onStarChange={this.onStarChange}
                       onDeleteContact={this.onDeleteContact}
                       onEditContact={this.onEditContact}

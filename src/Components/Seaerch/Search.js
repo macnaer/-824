@@ -7,12 +7,11 @@ class Search extends React.Component {
   };
 
   onSearch = event => {
+    const value = event.target.value;
     this.setState({
-      search: event.target.value
+      search: value
     });
-
-    const search = this.state.search;
-    this.props.onSearch(search);
+    this.props.onSearch(value);
   };
 
   render() {
