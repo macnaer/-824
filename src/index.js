@@ -126,6 +126,7 @@ class App extends React.Component {
     this.setState({
       List: newList
     });
+    this.saveNewContact(newList);
   };
 
   onSearch = contactName => {

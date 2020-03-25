@@ -72,7 +72,7 @@ class EditContact extends React.Component {
                 type="text"
                 className="form-control"
                 onChange={this.getName}
-                placeholder={name}
+                value={name}
               />
             </div>
             <div className="form-group">
@@ -81,7 +81,7 @@ class EditContact extends React.Component {
                 type="text"
                 className="form-control"
                 onChange={this.getAddress}
-                placeholder={address}
+                value={address}
               />
             </div>
             <div className="form-group">
@@ -90,7 +90,7 @@ class EditContact extends React.Component {
                 type="tel"
                 className="form-control"
                 onChange={this.getPhone}
-                placeholder={phone}
+                value={phone}
               />
             </div>
             <div className="form-group">
@@ -101,7 +101,7 @@ class EditContact extends React.Component {
                 max="99"
                 className="form-control"
                 onChange={this.getAvatar}
-                placeholder={avatar}
+                value={avatar}
               />
             </div>
             <label forhtml="exampleInputEmail1">Email address</label>
@@ -111,7 +111,7 @@ class EditContact extends React.Component {
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               onChange={this.getEmail}
-              placeholder={email}
+              value={email}
             />
             <small id="emailHelp" className="form-text text-muted">
               We'll never share your email with anyone else.
