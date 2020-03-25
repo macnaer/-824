@@ -52,8 +52,8 @@ class App extends React.Component {
     });
   };
 
-  saveNewContact = newList => {
-    fetch(this.URL, {
+  async saveNewContact(newList) {
+    await fetch(this.URL, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -63,12 +63,12 @@ class App extends React.Component {
     })
       .then(function(res) {
         console.log(res);
-        this.updateContactList();
       })
       .catch(function(res) {
         console.log(res);
       });
-  };
+    this.updateContactList();
+  }
 
   onAddContact = (name, address, phone, avatar, email) => {
     const newContact = {
@@ -91,9 +91,7 @@ class App extends React.Component {
     const partOne = this.state.List.slice(0, index);
     const partTwo = this.state.List.slice(index + 1);
     const newList = [...partOne, ...partTwo];
-    this.setState({
-      List: newList
-    });
+    this.saveNewContact(newList);
   };
 
   onEditContact = id => {
